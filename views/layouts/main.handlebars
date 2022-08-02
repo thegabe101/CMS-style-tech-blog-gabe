@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/reset.css">
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <title>Techomode Blog</title>
+</head>
+<body>
+    
+    <nav>
+        <h1>Techomode</h1>
+        <a href="/">Homepage</a>
+        {{#if logged_in}}
+        <a href="/dashboard">Dashboard</a>
+        <button id="logout">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+    </nav>
+    <div class="container">
+    {{{body}}}
+    </div>
+    <!-- should be only script necessary in handlebars main because login/logout buttton will only be visible interactivity until other hbs loaded-->
+<script src="../scripts/logout.js"></script>
+</body>
+</html>
