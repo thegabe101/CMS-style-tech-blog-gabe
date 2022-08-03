@@ -9,6 +9,35 @@ const Comment = require('./commentModel');
 //post foreign key is userId and a comment foreign key is UserId as well in order to associate those artifacts with their users. 
 //we also know we will be required to export our modules, so I will do that now before I forget. 
 
+User.hasMany(Post, {
+    foreignKey: 'user_id'
+});
+
+Post.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: "CASCADE"
+});
+
+Comment.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: "CASCADE"
+});
+
+Comment.belongsTo(Post, {
+    foreignKey: 'post_id',
+    onDelete: "CASCADE"
+});
+
+User.hasMany(Comment, {
+    foreignKey: 'user_id',
+    onDelete: "CASCADE"
+});
+
+Post.hasMany(Comment, {
+    foreignKey: 'post_id',
+    onDelete: "CASCADE"
+})
+
 module.exports = {
     User,
     Comment, 

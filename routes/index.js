@@ -11,7 +11,7 @@ const routeHome = require("./homeRoutes.js");
 const routeLogin = require("./loginRoutes.js");
 //then we will have a route for our API
 const routeAPI = require("./api.js");
-const routeDash = require("./dashboardRoutes.js");
+const routeDash = require("./post-boxRoutes.js");
 const routeComment = require("./commentRoutes.js");
 
 //Finally, specify paths for the router to use and export it.
