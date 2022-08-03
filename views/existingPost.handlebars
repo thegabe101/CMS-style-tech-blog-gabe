@@ -1,6 +1,52 @@
 <!--We will also need a page that represents the viewing and commenting upon of existing comments upon posts.-->
 
-<!--We will need to grab and display existign post data and the comments that have been made upon that post.-->
+<!--We will need to grab and display existing post data and the comments that have been made upon that post.-->
 
+<main>
+    <div>
+        <a href="/post/{{post.id}}">
+            <div id="post_title">
+                <span>{{post.title}}</span> <span>Posted by {{post.user.username}} on
+                    {{format_date post.created_at}}</span>
+            </div>
+        </a>
 
+        <div class="card-body post-body overflow-auto" id="cardBody">
+            <p class="card-text">{{post.content}}</p>
+        </div>
+        <a class="link-light text-decoration-none comment-link" data-bs-toggle="collapse" href="#commentBody{{post.id}}"
+            role="button" aria-expanded="false" aria-controls="commentBody">
+            <div class="card-footer py-1 bg-secondary">
+                <small class="fw-bold "><i class="fas fa-caret-square-down"></i> Comments</small>
+            </div>
+        </a>
+        <div class="collapse" id="commentBody{{post.id}}">
+            {{#if post.comments}}
+            <div class="card-body overflow-auto comment-body p-0">
+                {{> comment post.comments}}
+            </div>
+            {{else}}
+            {{/if}}
+
+            {{#if loggedIn}}
+            <div>
+                <form>
+                    <div>
+                        <textarea class="form-control hide-scroll" placeholder="Type comment here"
+                            name="comment-body" id="commentText"></textarea>
+                    </div>
+
+                    <div class="mt-1 text-center">
+                        <button type="submit" class="btn btn-warning btn-sm col-6 mb-3 rounded">Submit</button>
+                    </div>
+                </form>
+            </div>
+            {{else}}
+            {{/if}}
+        </div>
+
+    </div>
+</main>
+
+<script src="../views\scripts\comment.js"></script>
 

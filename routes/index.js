@@ -19,7 +19,7 @@ router.use("/", routeHome);
 router.use("/login", routeLogin);
 router.use("/api", routeAPI);
 router.use("/comment", routeComment);
-router.use("/dashbaord", routeDash);
+router.use("/dashboard", routeDash);
 //seems we will need a dashboard route as well so will add that. 
 //Finally, accoreding to user story, we will need a comment route for when a user posts comments to a published story. 
 
