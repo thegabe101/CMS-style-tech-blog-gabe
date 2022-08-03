@@ -8,18 +8,19 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/style.css">
 </head>
-<body>
-    
-    <nav>
+<header>    
+        <nav>
         <h1>Techomode</h1>
         <a href="/">Homepage</a>
-        {{#if logged_in}}
-        <a href="/dashboard">Dashboard</a>
+            {{#if logged_in}}
+        <a href="/post-box">Post-Box</a>
         <button id="logout">Logout</button>
-        {{else}}
+            {{else}}
         <a href="/login">Login</a>
-        {{/if}}
-    </nav>
+            {{/if}}
+        </nav>
+        </header>
+<body>
     <div class="container">
     {{{body}}}
     </div>
