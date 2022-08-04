@@ -19,7 +19,6 @@ const sess = {
 //set up our port and app
 const PORT = process.env.PORT || 3001;
 const app = express();
-
 //next we'll get our handlebars engine set up
 
 const bars = handlebars.create();
