@@ -1,5 +1,5 @@
 //going to try to handle signup and login in one form and one handlebars. probably not the best practice but the methods here will be super similar so I want to try and see if it works. 
-
+console.log("is this working");
 async function signupForm(e) {
     e.preventDefault();
 

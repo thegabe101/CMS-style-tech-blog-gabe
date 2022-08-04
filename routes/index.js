@@ -10,19 +10,38 @@ const routeHome = require("./homeRoutes.js");
 //then we need some kind of login page. 
 const routeLogin = require("./loginRoutes.js");
 //then we will have a route for our API
-const routeAPI = require("./api.js");
-const routeDash = require("./post-boxRoutes.js");
-const routeComment = require("./commentRoutes.js");
+// const routeDash = require("./post-boxRoutes.js");
+// const routeComment = require("./commentRoutes.js");
 
 //Finally, specify paths for the router to use and export it.
-router.use("/", routeHome);
-router.use("/login", routeLogin);
-router.use("/api", routeAPI);
-router.use("/comment", routeComment);
-router.use("/dashboard", routeDash);
+// router.use("/", routeHome);
+router.use("/loginRoutes", routeLogin);
+// router.use("/api", routeAPI);
+// router.use("/comment", routeComment);
+// router.use("/dashboard", routeDash);
 //seems we will need a dashboard route as well so will add that. 
 //Finally, accoreding to user story, we will need a comment route for when a user posts comments to a published story. 
 
 //TODO: Determine what other pages will be necessary and create the accordant routes. 
+
+const apiRoutes = require('./api');
+
+router.use('/home', routeHome);
+
+//homepage render
+// router.get('/',(req,res)=>{
+//     res.render("main")
+// })
+
+//login render
+router.get("/", (req,res)=>{
+    res.render("login")
+})
+
+
+router.use('/api', apiRoutes);
+
+
+
 
 module.exports = router;

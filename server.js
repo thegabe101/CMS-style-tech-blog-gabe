@@ -8,7 +8,14 @@ const sequelize = require("./config/connection.js");
 const express = require("express");
 const path = require("path");
 //fairly sure that's all we need but will find out more in class today
-
+const sess = {
+    secret: "nosecret",
+    saveUnitialized: false,
+    reserve: false,
+    store: new sequelizeStore ({
+        db: sequelize
+    })
+}
 //set up our port and app
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -35,14 +42,7 @@ app.use(Router)
 //TODO: create session
 //learned how to make a session in class today. first we need to require sequelizestore, which we will do up above. 
 //next, we declare a session with several parameters
-const yourSession = {
-    secret: "nosecret",
-    saveUnitialized: false,
-    reserve: false,
-    store: new sequelizeStore ({
-        db: sequelize
-    })
-};
+
 
 
 //finally we can set up our sequelize sync and port listen
