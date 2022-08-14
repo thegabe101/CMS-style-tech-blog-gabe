@@ -10,6 +10,17 @@ const { User } = require('../../models');
 //starting with signup, we'll use the create method. 
 //this will create a user body object with our model params (username, email, pw)
 
+//mostly an insomnia route just to make sure i am registering new users
+router.get('/', (req, res) => {
+    // Access our User model and run .findAll() method)
+    User.findAll({
+    })
+        .then(userData => res.json(userData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 //ROUTE is /api/users
 router.post('/', (req, res) => {
