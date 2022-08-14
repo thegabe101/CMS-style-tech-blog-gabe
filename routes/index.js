@@ -47,17 +47,14 @@
 // module.exports = router;
 
 const router = require('express').Router();
+const homeRoutes = require('./homeRoutes')
 const apiRoutes = require('./api');
 
-router.get('/',(req,res)=>{
-    res.render("home")
-})
-
-router.get("/login",(req,res)=>{
-    res.render("login")
-})
+//moving the frontend routes to the homeroutes js
+//deleting extraneous route js and adding them to the frontend homeroutes rendering js 
 
 
+router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
 
 module.exports = router;
