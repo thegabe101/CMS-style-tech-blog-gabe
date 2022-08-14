@@ -2,6 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 //need to require bcrypt in order to created a hashed pw 
 const bcrypt = require('bcrypt');
+// user extending model and will have posts + comments
 class User extends Model {
     checkPassword(userLoginPW) {
         //return and sync encrypted password for user model 

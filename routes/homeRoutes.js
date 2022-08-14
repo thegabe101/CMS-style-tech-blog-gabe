@@ -23,5 +23,46 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
+//now we need a findAll route for users + a findByPk for users if we want to find a SINGLE post from that user 
+
+//to get all users posts on the homepage, we use findall and include model user. This finds all users, then we make a map of alll post data and render it as a handlebars view with all posts contained
+
+router.get('/', req, res => {
+    Post.findAll({
+        include: [User],
+    }).then((postData) => {
+        //map all posts into an array and get the plain data
+        const allPosts = postData.map((allPosts) =>
+            allPosts.get({ plain: true }))
+        //route to existingPosts handlebars
+        res.render("existingPosts", { allPosts });
+    }).catch((err) => {
+        res.status(500).json(err);
+    });
+});
+
+//to get a post by id and display it alone we can do something similar, but this time we need to find by req.params.id
+
+router.get("/post/:id", (req, res) => {
+    Post.findByPk(req.params.id, {
+        include: [
+            User,
+            {
+                model: comment,
+                include: [User],
+            },
+        ],
+    }).then((indPostData) => {
+        if (indPostData) {
+            const indPost = indPostData.get({ plain: true });
+            res.render("post-box", { indPost });
+        } else {
+            res.status(404, { msg: 'Sorry, no matching page could be found.' }).end();
+        }
+    }).catch((err) => {
+        res.status(500).json(err);
+    });
+});
+
 
 module.exports = router
