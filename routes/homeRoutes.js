@@ -27,7 +27,7 @@ router.get("/login", (req, res) => {
 
 //to get all users posts on the homepage, we use findall and include model user. This finds all users, then we make a map of alll post data and render it as a handlebars view with all posts contained
 
-router.get('/', req, res => {
+router.get('/', res => {
     Post.findAll({
         include: [User],
     }).then((postData) => {
@@ -48,7 +48,7 @@ router.get("/post/:id", (req, res) => {
         include: [
             User,
             {
-                model: comment,
+                model: Comment,
                 include: [User],
             },
         ],
@@ -60,7 +60,7 @@ router.get("/post/:id", (req, res) => {
             res.status(404, { msg: 'Sorry, no matching page could be found.' }).end();
         }
     }).catch((err) => {
-        res.status(500).json(err);
+        res.status(err);
     });
 });
 

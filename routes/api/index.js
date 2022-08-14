@@ -2,8 +2,9 @@
 //this index will direct the router to the backend routes for users, comments, and posts
 const router = require("express").Router();
 const userRoutes = require("./userRoutes");
-const commentRoutes = require("./commentRoutes");
+const commentRoutes = require("./commentRoutes.js");
 const postRoutes = require("./postboxRoutes");
+const authToken = require("../../utils/authToken");
 
 //now we can set our paths 
 
