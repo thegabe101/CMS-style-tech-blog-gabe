@@ -49,6 +49,7 @@
 const router = require('express').Router();
 const homeRoutes = require('./homeRoutes')
 const apiRoutes = require('./api');
+const dashRoutes = require('./dashroutes');
 
 //moving the frontend routes to the homeroutes js
 //deleting extraneous route js and adding them to the frontend homeroutes rendering js 
@@ -56,5 +57,6 @@ const apiRoutes = require('./api');
 
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
+router.use('/dash', dashRoutes);
 
 module.exports = router;
